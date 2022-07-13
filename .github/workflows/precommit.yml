@@ -1,16 +1,23 @@
+name: CodeChecking
+
+on: [push]
+
 jobs:
-  linting:
+  build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: ["3.9"]
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.9
-
-      - name: Linting
-        run: |
-          pip install pre-commit
-          pre-commit run --all-files
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements_dev.txt
+    - name: Analysing the code with pre commit checks
+      run: |
+        pre-commit run --all-files
