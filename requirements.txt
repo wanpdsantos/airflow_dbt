@@ -1,14 +1,6 @@
-#DEV REQUIREMENTS
-apache-airflow==2.2.2 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.2/constraints-3.9.txt"
-pylint==2.14.4
-black==22.6.0
-pre-commit==2.20.0
-mypy==0.961
-
-#PROD REQUIREMENTS
-apache-airflow-providers-amazon==4.0.0
-boto3==1.24.19
-psycopg2-binary==2.9.3
-pandas==1.4.3
+apache-airflow-providers-amazon==2.4.0
+apache-airflow-providers-postgres==2.3.0
+boto3==1.18.65
+psycopg2-binary==2.9.2
 dbt-core==1.1.1
 dbt-redshift==1.1.0
