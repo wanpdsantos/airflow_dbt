@@ -1,0 +1,25 @@
+# Profiles required for the dbt projects
+
+finance:
+  target: stg
+  outputs:
+    stg:
+      type: redshift
+      host: "{{ env_var('stg_host') }}"
+      user: "{{ env_var('stg_user') }}"
+      pass: "{{ env_var('stg_pass') }}"
+      port: "{{ env_var('stg_port') | as_number }}"
+      dbname: stage_db
+      schema: finance
+      threads: 1
+      keepalives_idle: 0
+    prod:
+      type: redshift
+      host: "{{ env_var('prod_host') }}"
+      user: "{{ env_var('prod_user') }}"
+      pass: "{{ env_var('prod_pass') }}"
+      port: "{{ env_var('prod_port') | as_number }}"
+      dbname: prod_db
+      schema: finance
+      threads: 1
+      keepalives_idle: 0
