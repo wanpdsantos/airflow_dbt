@@ -1,6 +1,6 @@
 # Profiles required for the dbt projects
 
-finance:
+finances:
   target: stg
   outputs:
     stg:
