@@ -1,29 +1,27 @@
 name: Deploy to S3
 
 on:
-  push:
+  merge:
     branches:
     - master
 
 jobs:
-  deploy:
+  S3PackageUpload:
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: arn:aws:iam::664668383074:role/prod.github_sync_s3.role
-        aws-access-key-id: ${{ secrets.AWS_S3_CI_AIRFLOW_BUCKET_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_S3_CI_AIRFLOW_BUCKET_SECRET_KEY }}
-        aws-region: sa-east-1
-
-    - name: Copy files to the test website with the AWS CLI
-      run: |
-        aws s3 sync . s3://ci-airflow-dags
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::664668383074:role/prod.github_sync_s3.role
+          role-session-name: airflow_session
+          aws-region: sa-east-1
+      # Upload a file to AWS s3
+      - name:  Copy index.html to s3
+        run: |
+          aws s3 sync . s3://ci-airflow-dags/

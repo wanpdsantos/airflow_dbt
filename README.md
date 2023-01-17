@@ -1,9 +1,25 @@
-# Run the project
-## MAC OS Development workflow
-1. Clone the repo
-2. Create a python virtual environment version 3.7 on project root: python3 -m venv venv
-3. Activate the environment: source venv/bin/activate
-4. Make sure the python version is 3.7 (to match airflow environment): python3 --version
-5. Upgrade pip: python3 -m pip install --upgrade pip
-6. Install the python packages: pip3 install -r requirements_dev.txt
-7. When you try to commit, it will check the code. If its all good, commit will be done, if code require changes to be compliant to the applied rules, commit will fail. During the test, the code formatter automatically fix the code. So, if the commit attempt fails, just stage the automatically changes files and try to commit again
+# Airflow AWS Managed Environment
+
+This project contains the DAGs to run on an AWS Airflow Managed environment and DBT projects to run as well. 
+
+## Components
+
+### [AWS Managed Airflow](https://aws.amazon.com/managed-workflows-for-apache-airflow/)
+
+Amazon Managed Workflows for Apache Airflow (MWAA) orchestrates your workflows using Directed Acyclic Graphs (DAGs) written in Python. You provide MWAA an Amazon Simple Storage Service (S3) bucket where your DAGs, plugins, and Python requirements reside. Then run and monitor your DAGs from the AWS Management Console, a command line interface (CLI), a software development kit (SDK), or the Apache Airflow user interface (UI).
+
+### [DBT (Data Transformation)](https://docs.getdbt.com/)
+
+dbt is a transformation workflow that helps you get more work done while producing higher quality results. You can use dbt to modularize and centralize your analytics code, while also providing your data team with guardrails typically found in software engineering workflows. Collaborate on data models, version them, and test and document your queries before safely deploying them to production, with monitoring and visibility.
+
+## How to Run
+
+To run this, you should have a previous infrastructure in place. Its required a AWS Airflow Managed instance running as well as a S3 bucket.
+
+### Deployment
+
+1. Fork this repository
+2. Update the .github/workflows/deploy_to_s3.yml file to match your S3 bucket and role.
+3. Updated the DAGs according to your needs.
+4. Merge with master and it will get deployed to your S3 bucket
+5. Airflow should automatically update the DAGs
