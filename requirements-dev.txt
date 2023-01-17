@@ -3,7 +3,6 @@ apache-airflow==2.2.2 --constraint "https://raw.githubusercontent.com/apache/air
 pylint==2.14.4
 black==22.6.0
 pre-commit==2.20.0
-mypy==0.961
 sqlfluff==1.2.0
 pytest==7.1.2
 
