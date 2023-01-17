@@ -1,6 +1,6 @@
 # Airflow AWS Managed Environment
 
-This project contains the DAGs to run on an AWS Airflow Managed environment and DBT projects to run as well. 
+This is a template project to run Airflow and DBT on an AWS Managed environment.
 
 ## Components
 
@@ -18,8 +18,9 @@ To run this, you should have a previous infrastructure in place. Its required a 
 
 ### Deployment
 
-1. Fork this repository
+1. Fork this repository.
 2. Update the .github/workflows/deploy_to_s3.yml file to match your S3 bucket and role.
 3. Updated the DAGs according to your needs.
-4. Merge with master and it will get deployed to your S3 bucket
-5. Airflow should automatically update the DAGs
+4. Merge with master and it will get deployed to your S3 bucket.
+5. Airflow should automatically update the DAGs.
+6. Now you can create new DAGs and/or DBT projects according to your needs.
