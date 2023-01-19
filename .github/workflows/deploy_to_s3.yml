@@ -15,7 +15,7 @@ permissions:
   contents: read # This is required for actions/checkout
 
 jobs:
-  S3PackageUpload:
+  S3_dags_upload:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
@@ -24,8 +24,8 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: $AWS_ROLE_CD_AIRFLOW
-          aws-region: $AWS_REGION
+          role-to-assume: "$AWS_ROLE_CD_AIRFLOW"
+          aws-region: "$AWS_REGION"
 
       - name: Deploy to S3 bucket
         run: aws s3 sync ./dags s3://$AWS_S3_AIRFLOW_BUCKET_NAME --delete
