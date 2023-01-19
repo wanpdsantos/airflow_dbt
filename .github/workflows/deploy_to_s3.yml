@@ -5,9 +5,9 @@ on:
     branches:
       - master
 env:
-  AWS_S3_AIRFLOW_BUCKET_NAME: ${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}
-  AWS_REGION: ${{ env.AWS_REGION }}
-  AWS_ROLE_CD_AIRFLOW: ${{ env.AWS_ROLE_CD_AIRFLOW }}
+  AWS_S3_AIRFLOW_BUCKET_NAME: ${{ secrets.AWS_S3_AIRFLOW_BUCKET_NAME }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_ROLE_CD_AIRFLOW: ${{ secrets.AWS_ROLE_CD_AIRFLOW }}
 
 # permission can be added at job level or workflow level
 permissions:
