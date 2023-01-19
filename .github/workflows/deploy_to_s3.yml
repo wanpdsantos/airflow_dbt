@@ -1,27 +1,31 @@
 name: Deploy to S3
 
 on:
-  merge:
+  push:
     branches:
-    - master
+      - master
+env:
+  AWS_S3_AIRFLOW_BUCKET_NAME: ${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}
+  AWS_REGION: ${{ env.AWS_REGION }}
+  AWS_ROLE_CD_AIRFLOW: ${{ env.AWS_ROLE_CD_AIRFLOW }}
+
+# permission can be added at job level or workflow level
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
 
 jobs:
   S3PackageUpload:
-    name: Upload to Amazon S3
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
+
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::664668383074:role/prod.github_sync_s3.role
-          role-session-name: airflow_session
-          aws-region: sa-east-1
-      # Upload a file to AWS s3
-      - name:  Copy index.html to s3
-        run: |
-          aws s3 sync . s3://ci-airflow-dags/
+          role-to-assume: $AWS_ROLE_CD_AIRFLOW
+          aws-region: $AWS_REGION
+
+      - name: Deploy to S3 bucket
+        run: aws s3 sync ./dags s3://$AWS_S3_AIRFLOW_BUCKET_NAME --delete

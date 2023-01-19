@@ -12,9 +12,10 @@ Amazon Managed Workflows for Apache Airflow (MWAA) orchestrates your workflows u
 
 dbt is a transformation workflow that helps you get more work done while producing higher quality results. You can use dbt to modularize and centralize your analytics code, while also providing your data team with guardrails typically found in software engineering workflows. Collaborate on data models, version them, and test and document your queries before safely deploying them to production, with monitoring and visibility.
 
-## How to Run
+## Requirements
 
-To run this, you should have a previous infrastructure in place. Its required a AWS Airflow Managed instance running as well as a S3 bucket.
+- You should have a previous infrastructure in place. Its required a AWS Airflow Managed instance running as well as a S3 bucket.
+- Make sure there is an OpenID connection between your AWS account and your airflow repository. Here is the [link](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) for this procedure. It is not recommended, but you can create a user and use the user ACCESS_KEY and SECRET_KEY to include on the CD pipeline instead of using OpenID Connect.
 
 ### Deployment
 
