@@ -24,8 +24,8 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: "$AWS_ROLE_CD_AIRFLOW"
-          aws-region: "$AWS_REGION"
+          role-to-assume: ${{ secrets.AWS_ROLE_CD_AIRFLOW }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./dags s3://$AWS_S3_AIRFLOW_BUCKET_NAME --delete
+        run: aws s3 sync ./dags s3://${{ secrets.AWS_S3_AIRFLOW_BUCKET_NAME }} --delete
