@@ -30,3 +30,4 @@ jobs:
 
       - name: Deploy to S3 bucket
         run: aws s3 cp --recursive ./dags/ s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/dags
+        run: aws s3 cp requirements.txt s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/
