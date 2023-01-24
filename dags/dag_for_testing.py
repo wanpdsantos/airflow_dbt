@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 
 WORKFLOW_DEFAULT_ARGS = {
     "start_date": datetime(2021, 7, 21),
@@ -19,7 +19,7 @@ with DAG(
     catchup=False,
     max_active_runs=1,
 ) as dag:
-    start_operator = DummyOperator(task_id="Begin_execution", dag=dag)
-    end_operator = DummyOperator(task_id="Stop_execution")
+    start_operator = EmptyOperator(task_id="Begin_execution")
+    end_operator = EmptyOperator(task_id="Stop_execution")
 
     (start_operator >> end_operator)
