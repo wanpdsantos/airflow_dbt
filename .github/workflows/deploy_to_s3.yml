@@ -21,7 +21,6 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v3
 
-
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -30,4 +29,4 @@ jobs:
           role-session-name: deploymentrolesession
 
       - name: Deploy to S3 bucket
-        run: aws s3 cp --recursive ./dags/ s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/
+        run: aws s3 cp --recursive ./dags/ s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/dags
