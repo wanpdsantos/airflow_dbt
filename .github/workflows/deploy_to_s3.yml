@@ -24,9 +24,9 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_CD_AIRFLOW }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ env.AWS_ROLE_CD_AIRFLOW }}
+          aws-region: ${{ env.AWS_REGION }}
           role-session-name: deploymentrolesession
 
       - name: Deploy to S3 bucket
-        run: aws s3 cp --recursive ./dags/ s3://${{ secrets.AWS_S3_AIRFLOW_BUCKET_NAME }}/
+        run: aws s3 cp --recursive ./dags/ s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/
