@@ -28,6 +28,8 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: deploymentrolesession
 
-      - name: Deploy to S3 bucket
+      - name: Copy Dags to S3 Bucket
         run: aws s3 cp --recursive ./dags/ s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/dags
+
+      - name: Copy Requirements File to S3 Bucket
         run: aws s3 cp requirements.txt s3://${{ env.AWS_S3_AIRFLOW_BUCKET_NAME }}/
