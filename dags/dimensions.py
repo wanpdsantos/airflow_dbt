@@ -13,7 +13,7 @@ WORKFLOW_DEFAULT_ARGS = {
 with DAG(
     dag_id="dag_for_testing",
     default_args=WORKFLOW_DEFAULT_ARGS,
-    default_view="tree",
+    default_view="grid",
     description="Dag created for testing DBT and Airflow CI/CD pipeline",
     schedule_interval=None,
     catchup=False,

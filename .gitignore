@@ -1,6 +1,10 @@
 # IDE
 .vscode
 
+#DBT
+dbt_packages/
+.user.yml
+
 # File system
 .DS_Store
 
