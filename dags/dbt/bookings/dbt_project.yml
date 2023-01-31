@@ -1,9 +1,8 @@
-
-name: 'bookings'
-version: '1.0.0'
+name: "bookings"
+version: "1.0.0"
 config-version: 2
 
-profile: 'bookings'
+profile: "bookings"
 
 model-paths: ["models"]
 
@@ -14,5 +13,7 @@ clean-targets:
 
 models:
   bookings:
-    example:
+    fact:
+      +materialized: table
+    summary:
       +materialized: view

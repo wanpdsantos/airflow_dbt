@@ -1,8 +1,7 @@
-
 {% docs __overview__ %}
 
 # DBT Project Documentation
-
+Tests
 This project is intended to be a playground to test [DBT](https://docs.getdbt.com/docs/introduction) functionalities, including:
 
 - Models: There are some example dimensions, facts, and summary models.

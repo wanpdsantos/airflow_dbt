@@ -10,11 +10,11 @@ models:
           - unique
           - not_null
       - name: user_id
-        description: "Foreign key to the dimensions.users table"
+        description: "{{ doc('user_id') }}"
         tests:
           - not_null
       - name: company_id
-        description: "Foreign key to the dimensions.companies table"
+        description: "{{ doc('company_id') }}"
         tests:
           - not_null
       - name: region_id
@@ -46,11 +46,11 @@ models:
           - unique
           - not_null
       - name: user_id
-        description: "Foreign key to the dimensions.users table"
+        description: "{{ doc('user_id') }}"
         tests:
           - not_null
       - name: company_id
-        description: "Foreign key to the dimensions.companies table"
+        description: "{{ doc('company_id') }}"
         tests:
           - not_null
       - name: region_id
@@ -77,7 +77,7 @@ models:
     description: "A summary table containing an overview metrics of the bookings"
     columns:
       - name: company_id
-        description: "Foreign key to the dimensions.companies table"
+        description: "{{ doc('company_id') }}"
         tests:
           - not_null
       - name: region_id
