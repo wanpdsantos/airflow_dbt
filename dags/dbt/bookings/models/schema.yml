@@ -73,7 +73,7 @@ models:
         description: "The session duration of the booked service"
         tests:
           - not_null
-  - name: bookings_overview
+  - name: smy_bookings_overview
     description: "A summary table containing an overview metrics of the bookings"
     columns:
       - name: company_id

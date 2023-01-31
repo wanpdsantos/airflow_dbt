@@ -46,27 +46,26 @@ bookings:
       schema: bookings
       threads: 1
       keepalives_idle: 0
-
-docs_definitions:
+documentation:
+  target: dev
   outputs:
     dev:
       type: postgres
-      threads: [1 or more]
-      host: [host]
-      port: [port]
-      user: [dev_username]
-      pass: [dev_password]
-      dbname: [dbname]
-      schema: [dev_schema]
-
+      host: "{{ env_var('db_host') }}"
+      user: "{{ env_var('db_user') }}"
+      pass: "{{ env_var('db_pass') }}"
+      port: "{{ env_var('db_port') | as_number }}"
+      dbname: dev
+      schema: documentation
+      threads: 1
+      keepalives_idle: 0
     prod:
-      type: postgres
-      threads: [1 or more]
-      host: [host]
-      port: [port]
-      user: [prod_username]
-      pass: [prod_password]
-      dbname: [dbname]
-      schema: [prod_schema]
-
-  target: dev
+      type: redshift
+      host: "{{ env_var('db_host') }}"
+      user: "{{ env_var('db_user') }}"
+      pass: "{{ env_var('db_pass') }}"
+      port: "{{ env_var('db_port') | as_number }}"
+      dbname: prod
+      schema: documentation
+      threads: 1
+      keepalives_idle: 0

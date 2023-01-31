@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: users
+  - name: dim_users
     description: "The dimension model for the users"
     columns:
       - name: id
@@ -19,7 +19,7 @@ models:
           - accepted_values:
               values: ["ENABLED", "DISABLED"]
 
-  - name: companies
+  - name: dim_companies
     description: "The dimension model for the companies"
     columns:
       - name: id

@@ -5,7 +5,7 @@ name: "documentation"
 version: "1.0.0"
 config-version: 2
 
-profile: "dimensions"
+profile: "documentation"
 
 docs-paths: ["../.docs_definitions"]
 
