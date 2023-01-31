@@ -23,3 +23,26 @@ dimensions:
       schema: dimensions
       threads: 1
       keepalives_idle: 0
+bookings:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('db_host') }}"
+      user: "{{ env_var('db_user') }}"
+      pass: "{{ env_var('db_pass') }}"
+      port: "{{ env_var('db_port') | as_number }}"
+      dbname: dev
+      schema: bookings
+      threads: 1
+      keepalives_idle: 0
+    prod:
+      type: redshift
+      host: "{{ env_var('db_host') }}"
+      user: "{{ env_var('db_user') }}"
+      pass: "{{ env_var('db_pass') }}"
+      port: "{{ env_var('db_port') | as_number }}"
+      dbname: prod
+      schema: bookings
+      threads: 1
+      keepalives_idle: 0

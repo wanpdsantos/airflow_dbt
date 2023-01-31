@@ -25,6 +25,15 @@ Since the data in a dimension table is often denormalized, dimension tables have
 
 {% enddocs %}
 
+{% docs __bookings__ %}
+
+# Bookings Models
+
+This is the description of the Bookings DBT project.
+...
+
+{% enddocs %}
+
 {% docs __dbt_utils__ %}
 
 # Utility macros

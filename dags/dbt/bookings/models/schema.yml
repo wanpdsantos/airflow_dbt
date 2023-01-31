@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: fct_users_bookings
+    description: "A fact table for the user bookings"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Foreign key to the dimensions.users table"
+        tests:
+          - not_null
+      - name: company_id
+        description: "Foreign key to the dimensions.companies table"
+        tests:
+          - not_null
+      - name: region_id
+        description: "Foreign key to the dimensions.regions table"
+        tests:
+          - not_null
+      - name: status
+        description: "The status of the booking"
+        tests:
+          - not_null
+      - name: date_created
+        description: "The timestamp when the booking was created"
+        tests:
+          - not_null
+      - name: total_paid
+        description: "Total amount paid for the booked service"
+        tests:
+          - not_null
+      - name: session_time
+        description: "The session duration of the booked service"
+        tests:
+          - not_null
+  - name: fct_users_premium_bookings
+    description: "A fact table for the user bookings"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Foreign key to the dimensions.users table"
+        tests:
+          - not_null
+      - name: company_id
+        description: "Foreign key to the dimensions.companies table"
+        tests:
+          - not_null
+      - name: region_id
+        description: "Foreign key to the dimensions.regions table"
+        tests:
+          - not_null
+      - name: status
+        description: "The status of the booking"
+        tests:
+          - not_null
+      - name: date_created
+        description: "The timestamp when the booking was created"
+        tests:
+          - not_null
+      - name: total_paid
+        description: "Total amount paid for the booked service"
+        tests:
+          - not_null
+      - name: session_time
+        description: "The session duration of the booked service"
+        tests:
+          - not_null
+  - name: bookings_overview
+    description: "A summary table containing an overview metrics of the bookings"
+    columns:
+      - name: company_id
+        description: "Foreign key to the dimensions.companies table"
+        tests:
+          - not_null
+      - name: region_id
+        description: "Foreign key to the dimensions.regions table"
+        tests:
+          - not_null
+      - name: total_paid
+        description: "Total value paid for the booked services"
+        tests:
+          - not_null
+      - name: total_session_time
+        description: "Summation of the duration of all booked sessions"
+        tests:
+          - not_null
+      - name: avg_total_paid
+        description: "Average value paid for the booked services"
+        tests:
+          - not_null
+      - name: avg_session_time
+        description: "Average duration of all sessions for the booked services"
+        tests:
+          - not_null

@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -18,23 +17,22 @@ models:
         description: "The status of the user"
         tests:
           - accepted_values:
-              values: ['ENABLED', 'DISABLED']
+              values: ["ENABLED", "DISABLED"]
 
-  - name: projects
-    description: "The dimension model for the projects"
+  - name: companies
+    description: "The dimension model for the companies"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
-      - name: project_name
-        description: "The project name"
+      - name: company_name
+        description: "The company name"
         tests:
           - not_null
-      - name: project_status
-        description: "The status of the project"
+      - name: company_status
+        description: "The status of the company in the platform"
         tests:
           - accepted_values:
-              values: ['ENABLED', 'DISABLED']
-
+              values: ["ENABLED", "DISABLED"]
