@@ -1,0 +1,19 @@
+name: "bookings"
+version: "1.0.0"
+config-version: 2
+
+profile: "bookings"
+
+model-paths: ["models"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  bookings:
+    fact:
+      +materialized: table
+    summary:
+      +materialized: view

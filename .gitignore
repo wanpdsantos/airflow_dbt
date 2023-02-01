@@ -4,6 +4,7 @@
 #DBT
 dbt_packages/
 .user.yml
+dags/dbt/*.sh
 
 # File system
 .DS_Store
